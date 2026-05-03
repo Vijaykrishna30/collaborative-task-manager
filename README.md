@@ -1,138 +1,210 @@
-# Team Task Manager
+# 🚀 Collaborative Task Manager
 
-A modern full-stack task management application built with Spring Boot on the backend and Vite-powered React on the frontend.
+A full-stack **Task Management Dashboard** built using modern web technologies.
+This application enables teams to manage projects, assign tasks, track progress, and visualize productivity through a clean and responsive interface.
 
-## Overview
+---
 
-`team-task-manager` is designed to help teams organize projects, manage tasks, and monitor progress through a clean dashboard experience. The backend exposes a REST API with authentication, user management, project collaboration, and task tracking. The frontend consumes that API with a responsive React UI.
+## 📌 Overview
 
-## Architecture
+This project demonstrates a **real-world project management system** with:
 
-- `backend/` — Spring Boot REST API
-- `frontend/` — Vite + React UI
-- `backend/src/main/java` — Java application source
-- `frontend/src` — React application source
+* Project creation and team structure
+* Task assignment and status tracking
+* Dashboard insights for productivity monitoring
+* RESTful backend architecture
+* Clean and modular frontend design
 
-## Technology Stack
+---
 
-- Java 17
-- Spring Boot 3.2.x
-- Spring Security
-- Spring Data JPA
-- H2 in-memory database (default runtime)
-- JWT authentication
-- Vite
-- React
-- Tailwind CSS
-- Axios
-- React Router DOM
-- Recharts
-
-## Key Features
-
-- JWT-based authentication and authorization
-- User management and role control
-- Project and task CRUD operations
-- Dashboard metrics and analytics
-- Responsive frontend with modern UI components
-
-## Prerequisites
-
-- Java 17 JDK
-- Maven 3.9+
-- Node.js 18+
-- npm 10+ or Yarn
-
-## Backend Setup
-
-1. Open a terminal and navigate to the backend folder:
-   ```bash
-   cd backend
-   ```
-
-2. Build the backend application:
-   ```bash
-   mvn clean package
-   ```
-
-3. Run the backend service:
-   ```bash
-   mvn spring-boot:run
-   ```
-
-4. By default, the backend uses an embedded H2 database. Configuration is available in `backend/src/main/resources/application.properties`.
-
-## Frontend Setup
-
-1. Open a terminal and navigate to the frontend folder:
-   ```bash
-   cd frontend
-   ```
-
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
-
-3. Start the development server:
-   ```bash
-   npm run dev
-   ```
-
-4. Open the local Vite URL in your browser to view the application.
-
-## Production Build
+## 🛠️ Tech Stack
 
 ### Backend
 
-```bash
-cd backend
-mvn clean package
-java -jar target/task-manager-0.0.1-SNAPSHOT.jar
-```
+* Java 17
+* Spring Boot
+* Spring Data JPA
+* H2 Database (for development)
+* PostgreSQL (for production)
+* Maven
 
 ### Frontend
 
-```bash
-cd frontend
-npm run build
+* React (Vite)
+* Tailwind CSS
+* Axios
+* React Router
+
+---
+
+## ⚙️ Features
+
+### ✅ Core Features
+
+* Create and manage users
+* Create and manage projects
+* Create, update, and track tasks
+* Update task status (TODO → IN_PROGRESS → DONE)
+
+### 📊 Dashboard
+
+* Total projects
+* Total tasks
+* Completed tasks
+* In-progress tasks
+* Pending tasks
+
+### 🎨 UI Features
+
+* Responsive design
+* Clean dashboard layout
+* Status badges with color coding
+* Modular component structure
+
+---
+
+## 📂 Project Structure
+
+```text
+collaborative-task-manager/
+│
+├── backend/
+│   ├── src/main/java/com/taskmanager/
+│   ├── resources/
+│   └── pom.xml
+
+├── frontend/
+│   ├── src/
+│   ├── public/
+│   └── package.json
+
+└── README.md
 ```
 
-The built frontend assets will be available under `frontend/dist`.
+---
 
-## API Endpoints
+## 🚀 Getting Started
 
-The backend exposes REST endpoints under `/api/*`. Common endpoint groups include:
+### 🔹 Prerequisites
 
-- `/api/auth` — authentication and login
-- `/api/users` — user management
-- `/api/projects` — project operations
-- `/api/tasks` — task operations
-- `/api/dashboard` — dashboard reporting
+* Java 17+
+* Node.js (v16+ recommended)
+* Maven
 
-> Tip: Use the network inspector or API client to verify exact request shapes when integrating the frontend.
+---
 
-## Developer Notes
+## ▶️ Run Backend
 
-- The backend is configured for Java 17 and Spring Boot 3.2.x.
-- The frontend uses Vite with React and Tailwind CSS.
-- Authentication is token-based; the frontend should attach the JWT to API requests.
-- If you extend the API, verify CORS and security configuration in `backend/src/main/java/com/taskmanager/config`.
+```bash
+cd backend
+mvn spring-boot:run
+```
 
-## Recommended Workflow
+Backend runs at:
 
-1. Run backend and frontend concurrently during development.
-2. Use `npm run dev` for fast frontend hot reload.
-3. Use the Maven build for backend validation and packaging.
+```
+http://localhost:8081
+```
 
-## Contribution
+---
 
-1. Fork the repository.
-2. Create a feature branch.
-3. Add or update functionality.
-4. Verify backend build with `mvn clean package`.
-5. Verify frontend behavior with `npm run dev`.
+## ▶️ Run Frontend
 
-## License
+```bash
+cd frontend
+npm install
+npm run dev
+```
 
-This project does not specify a license. Add a license file if you intend to distribute or open-source this code.
+Frontend runs at:
+
+```
+http://localhost:5173
+```
+
+---
+
+## 🔗 API Endpoints
+
+### Users
+
+* `GET /api/users`
+* `POST /api/users`
+
+### Projects
+
+* `GET /api/projects`
+* `POST /api/projects`
+
+### Tasks
+
+* `GET /api/tasks/project/{id}`
+* `POST /api/tasks`
+* `PATCH /api/tasks/{id}/status`
+
+### Dashboard
+
+* `GET /api/dashboard`
+
+---
+
+## 🧪 Example Workflow
+
+1. Create a user
+2. Create a project
+3. Create tasks under the project
+4. Update task status
+5. View dashboard metrics
+
+---
+
+## 🌐 Railway Deployment
+
+This project is configured for **Railway deployment** with PostgreSQL database.
+
+### Quick Deploy
+
+1. Push to GitHub
+2. Connect repository on Railway
+3. Add PostgreSQL database addon
+4. Set `JWT_SECRET` environment variable
+5. Deploy!
+
+📖 **See [DEPLOYMENT.md](./DEPLOYMENT.md) for detailed instructions**
+
+---
+
+## ⚠️ Notes
+
+* **Development**: Uses H2 in-memory database → data resets on restart
+* **Production**: Uses PostgreSQL with Railway
+* No authentication implemented (can be extended with JWT)
+* Designed for demonstration and learning purposes
+
+---
+
+## 🚀 Future Enhancements
+
+* ✅ Railway Deployment Configuration
+* JWT Authentication & Role-Based Access Control
+* Real-time updates (WebSockets)
+* Advanced analytics & charts
+
+---
+
+## 📄 License
+
+This project is for educational and demonstration purposes.
+
+---
+
+## 👤 Author
+
+**Vijaykrishna**
+GitHub: https://github.com/Vijaykrishna30
+
+---
+
+## ⭐ If you found this useful
+
+Give this repository a ⭐ to support the project!
