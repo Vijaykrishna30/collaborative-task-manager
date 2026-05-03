@@ -175,12 +175,6 @@ http://localhost:5173
 
 ---
 
-## 📸 Screenshots
-
-*Add UI screenshots here after frontend completion*
-
----
-
 ## 📄 License
 
 This project is for educational and demonstration purposes.
