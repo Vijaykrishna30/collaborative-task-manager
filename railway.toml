@@ -1,0 +1,20 @@
+[build]
+builder = "NIXPACKS"
+
+[deploy]
+startCommand = "java -jar backend/target/task-manager-0.0.1-SNAPSHOT.jar"
+restartPolicyType = "ON_FAILURE"
+restartPolicyMaxRetries = 10
+
+[[services]]
+name = "backend"
+
+[services.variables]
+PORT = "8080"
+SPRING_DATASOURCE_URL = "${{RAILWAY_POSTGRESQL_URL}}"
+SPRING_DATASOURCE_USERNAME = "${{RAILWAY_POSTGRESQL_USER}}"
+SPRING_DATASOURCE_PASSWORD = "${{RAILWAY_POSTGRESQL_PASSWORD}}"
+SPRING_JPA_DATABASE_PLATFORM = "org.hibernate.dialect.PostgreSQLDialect"
+SPRING_JPA_HIBERNATE_DDL_AUTO = "update"
+JWT_SECRET = "${{JWT_SECRET}}"
+JWT_EXPIRATION = "86400000"
